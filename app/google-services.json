@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "743958019599",
+    "project_id": "abihappy-327b1",
+    "storage_bucket": "abihappy-327b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743958019599:android:da17834a0be3c9f4ce6d7a",
+        "android_client_info": {
+          "package_name": "com.jayyaj.abihappy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743958019599-0d3n620vp77r29956s2ilmg71t56nnep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJLewVmh5cexN9zpGU6ikIBeDQNQzpJgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743958019599-0d3n620vp77r29956s2ilmg71t56nnep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

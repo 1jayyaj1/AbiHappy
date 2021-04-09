@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AbiHappy</string>
+    <string name="title_text">Be Abi-Happy!</string>
+    <string name="grateful_text">What are you grateful for today?</string>
 </resources>
