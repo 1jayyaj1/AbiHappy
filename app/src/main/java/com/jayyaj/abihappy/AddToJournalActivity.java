@@ -16,16 +16,16 @@ public class AddToJournalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_journal);
 
-//        test = findViewById(R.id.test);
-//        test2 = findViewById(R.id.test2);
-//
-//        Intent intent = getIntent();
-//        String username = intent.getStringExtra("username");
-//        String userId = intent.getStringExtra("userId");
-//
-//        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(userId)) {
-//            test.setText(username);
-//            test2.setText(userId);
-//        }
+        test = findViewById(R.id.test);
+        test2 = findViewById(R.id.test2);
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String userId = intent.getStringExtra("userId");
+
+        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(userId)) {
+            test.setText(username);
+            test2.setText(userId);
+        }
     }
 }

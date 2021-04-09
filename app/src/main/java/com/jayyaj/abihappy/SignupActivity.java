@@ -88,7 +88,7 @@ public class SignupActivity extends AppCompatActivity {
     private void createUserEmailAccount(String emailText, String passwordText, String usernameText) {
         if (!TextUtils.isEmpty(emailText) && !TextUtils.isEmpty(passwordText) && !TextUtils.isEmpty(usernameText)) {
             progressBar.setVisibility(View.VISIBLE);
-            firebaseAuth.createUserWithEmailAndPassword(passwordText, passwordText).addOnCompleteListener(task -> {
+            firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     //We take users to the AddJournalActivity
                     currentUser = firebaseAuth.getCurrentUser();
