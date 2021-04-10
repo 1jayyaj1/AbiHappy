@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import com.jayyaj.abihappy.util.JournalApi;
+
 public class AddToJournalActivity extends AppCompatActivity {
     private TextView test;
     private TextView test2;
@@ -19,13 +21,14 @@ public class AddToJournalActivity extends AppCompatActivity {
         test = findViewById(R.id.test);
         test2 = findViewById(R.id.test2);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String userId = intent.getStringExtra("userId");
-
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(userId)) {
-            test.setText(username);
-            test2.setText(userId);
+        JournalApi journalApi = JournalApi.getInstance();
+        if (journalApi != null) {
+            String username = journalApi.getUsername();
+            String userId = journalApi.getUserId();
+            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(userId)) {
+                test.setText(username);
+                test2.setText(userId);
+            }
         }
     }
 }

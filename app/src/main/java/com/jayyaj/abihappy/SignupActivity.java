@@ -25,6 +25,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jayyaj.abihappy.util.JournalApi;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -107,9 +108,10 @@ public class SignupActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 String name = task1.getResult().getString("username");
 
+                                JournalApi journalApi = JournalApi.getInstance();
+                                journalApi.setUsername(name);
+                                journalApi.setUserId(currentUserId);
                                 Intent intent = new Intent(SignupActivity.this, AddToJournalActivity.class);
-                                intent.putExtra("username", name);
-                                intent.putExtra("userId", currentUserId);
                                 startActivity(intent);
                             } else {
                                 Log.e(TAG, "Could not get result from document reference");
