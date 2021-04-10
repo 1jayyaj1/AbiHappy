@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,15 +23,20 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.jayyaj.abihappy.model.Journal;
 import com.jayyaj.abihappy.util.JournalApi;
 
 import java.net.URI;
+import java.util.Date;
 
 public class AddToJournalActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int GALLERY_REQUEST_CODE = 10;
+    private static final String TAG = "AddToJournalActivity";
 
     private Button saveButton;
     private ProgressBar progressBar;
@@ -59,6 +65,7 @@ public class AddToJournalActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_journal);
 
+        storageReference = FirebaseStorage.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.postProgressbar);
         titleEditText = findViewById(R.id.postTitleEditText);
@@ -110,14 +117,34 @@ public class AddToJournalActivity extends AppCompatActivity implements View.OnCl
         String title = titleEditText.getText().toString().trim();
         String thoughts = thoughtsEditText.getText().toString().trim();
         if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(thoughts) && imageUri != null) {
-            StorageReference filePath = storageReference.child("journal_images").child("img_" + Timestamp.now().getSeconds());
+            StorageReference filePath = storageReference
+                    .child("journal_images")
+                    .child("img_" + Timestamp.now().getSeconds());
             filePath.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
-                progressBar.setVisibility(View.INVISIBLE);
-                //TODO Create a journal object
-                //TODO Invoke our collectionReference to create a journal collection
-                //TODO Save a journal instance
+                filePath.getDownloadUrl().addOnSuccessListener(uri -> {
+                    String imageUrl = uri.toString();
+
+                    Journal journal = new Journal();
+                    journal.setTitle(title);
+                    journal.setThought(thoughts);
+                    journal.setImageUrl(imageUrl);
+                    journal.setTimeAdded(new Timestamp(new Date()));
+                    journal.setUserName(currentUserName);
+                    journal.setUserId(currentUserId);
+
+                    collectionReference.add(journal).addOnSuccessListener(documentReference -> {
+                        progressBar.setVisibility(View.INVISIBLE);startActivity(new Intent(AddToJournalActivity.this,
+                                JournalTimelineActivity.class));
+                        finish();
+                    }).addOnFailureListener(e -> {
+                        Log.e(TAG, "Could not add to journal");
+                    });
+                }).addOnFailureListener(e -> {
+                    Log.e(TAG, "Could not add to journal");
+                });
             }).addOnFailureListener(e -> {
                 progressBar.setVisibility(View.INVISIBLE);
+                Log.e(TAG, "Could not add to journal");
             });
         } else {
             Toast.makeText(AddToJournalActivity.this, "Fields can't be empty", Toast.LENGTH_SHORT).show();

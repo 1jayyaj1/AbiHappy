@@ -118,16 +118,20 @@ public class SignupActivity extends AppCompatActivity {
                             }
                             progressBar.setVisibility(View.INVISIBLE);
                         }).addOnFailureListener(e -> {
+                            progressBar.setVisibility(View.INVISIBLE);
                             Log.e(TAG, "Could not get the document reference");
                         });
                     }).addOnFailureListener(e -> {
+                        progressBar.setVisibility(View.INVISIBLE);
                         Log.e(TAG, "Could not add user object to the collection reference");
                     });
                 } else {
                     //Something went on
+                    progressBar.setVisibility(View.INVISIBLE);
                     Log.e(TAG, "Create user task was not successful");
                 }
             }).addOnFailureListener(e -> {
+                progressBar.setVisibility(View.INVISIBLE);
                 Log.e(TAG, "Could not create user with email and password");
             });
         } else {

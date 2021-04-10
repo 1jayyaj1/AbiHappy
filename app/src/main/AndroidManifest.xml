@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AbiHappy">
-        <activity android:name=".AddToJournalActivity"></activity>
+        <activity android:name=".JournalTimelineActivity"></activity>
+        <activity android:name=".AddToJournalActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
