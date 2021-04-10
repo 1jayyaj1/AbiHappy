@@ -60,14 +60,11 @@
 
         <Button
             android:id="@+id/createAccountButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/create_text"
-            android:background="@android:color/transparent"
-            android:textColor="@color/purple_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            style="@style/button_style" />
     </LinearLayout>
 
 

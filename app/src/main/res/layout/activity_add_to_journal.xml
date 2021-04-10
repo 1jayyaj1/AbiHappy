@@ -6,25 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".AddToJournalActivity">
 
-    <TextView
-        android:id="@+id/test"
+    <ProgressBar
+        android:id="@+id/postProgressbar"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
-        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/postImageView"
+        android:layout_width="0dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/sample"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:scaleType="centerCrop"/>
+
     <TextView
-        android:id="@+id/test2"
+        android:id="@+id/postUserNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/postImageView"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="@+id/postImageView"
+        app:layout_constraintTop_toBottomOf="@+id/postCameraButton" />
+
+    <TextView
+        android:id="@+id/postDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/postImageView"
+        app:layout_constraintEnd_toEndOf="@+id/postImageView"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="@+id/postImageView"
+        app:layout_constraintTop_toBottomOf="@+id/postUserNameText"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <ImageView
+        android:id="@+id/postCameraButton"
+        android:layout_width="76dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="@+id/postImageView"
+        app:layout_constraintEnd_toEndOf="@+id/postImageView"
+        app:layout_constraintStart_toStartOf="@+id/postImageView"
+        app:layout_constraintTop_toTopOf="@+id/postImageView"
+        app:srcCompat="@android:drawable/ic_menu_camera"/>
+
+    <EditText
+        android:id="@+id/postTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/title_edit_text"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test" />
+        app:layout_constraintTop_toBottomOf="@+id/postImageView" />
+
+    <EditText
+        android:id="@+id/postThoughtEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/thoughts_edit_text"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postTitleEditText" />
+
+    <Button
+        android:id="@+id/postSaveJournalButton"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/post_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postThoughtEditText"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
