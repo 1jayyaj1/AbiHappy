@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button signin;
     private AutoCompleteTextView email;
     private EditText password;
+    private ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -55,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
 
+        progressBar = findViewById(R.id.loginProgress);
+
 
         signin.setOnClickListener(v -> {
             signinEmailPasswordUser(email.getText().toString().trim(), password.getText().toString().trim());
@@ -66,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signinEmailPasswordUser(String email, String password) {
+        progressBar.setVisibility(View.VISIBLE);
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
@@ -78,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                             assert queryDocumentSnapshots != null;
                             if (!queryDocumentSnapshots.isEmpty()) {
                                 for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                                    progressBar.setVisibility(View.INVISIBLE);
                                     JournalApi journalApi = JournalApi.getInstance();
                                     journalApi.setUsername(snapshot.getString("username"));
                                     journalApi.setUserId(currentUserId);
@@ -87,9 +92,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
             }).addOnFailureListener(e -> {
-
+                progressBar.setVisibility(View.INVISIBLE);
             });
         } else {
+            progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(LoginActivity.this, "Please enter an email and a password", Toast.LENGTH_SHORT).show();
         }
     }
