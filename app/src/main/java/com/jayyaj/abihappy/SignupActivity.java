@@ -111,7 +111,7 @@ public class SignupActivity extends AppCompatActivity {
                                 JournalApi journalApi = JournalApi.getInstance();
                                 journalApi.setUsername(name);
                                 journalApi.setUserId(currentUserId);
-                                Intent intent = new Intent(SignupActivity.this, AddToJournalActivity.class);
+                                Intent intent = new Intent(SignupActivity.this, JournalTimelineActivity.class);
                                 startActivity(intent);
                             } else {
                                 Log.e(TAG, "Could not get result from document reference");
