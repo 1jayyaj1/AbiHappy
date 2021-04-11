@@ -14,4 +14,6 @@
     <string name="thoughts_edit_text">Thought</string>
     <string name="post_button_text">Save</string>
     <string name="title_text_view">Title</string>
+    <string name="menu_title">Add to journal</string>
+    <string name="sign_out_text">Sign out</string>
 </resources>
