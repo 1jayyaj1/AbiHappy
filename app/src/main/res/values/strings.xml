@@ -16,7 +16,7 @@
     <string name="title_text_view">Title</string>
     <string name="menu_title">Add to journal</string>
     <string name="sign_out_text">Sign out</string>
-    <string name="empty_timeline_text">Looks like vicious tiger ate all of your thoughts today... Get started by tapping \"+\" above</string>
+    <string name="empty_timeline_text">Looks like a vicious tiger ate all of your thoughts today... Get started by tapping \"+\" above</string>
     <string name="card_row_text_title">Title</string>
     <string name="card_row_text_thought">Thought</string>
     <string name="card_row_text_date">Date created</string>

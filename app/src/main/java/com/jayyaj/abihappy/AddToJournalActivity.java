@@ -133,8 +133,8 @@ public class AddToJournalActivity extends AppCompatActivity implements View.OnCl
                     journal.setUserId(currentUserId);
 
                     collectionReference.add(journal).addOnSuccessListener(documentReference -> {
-                        progressBar.setVisibility(View.INVISIBLE);startActivity(new Intent(AddToJournalActivity.this,
-                                JournalTimelineActivity.class));
+                        progressBar.setVisibility(View.INVISIBLE);
+                        startActivity(new Intent(AddToJournalActivity.this, JournalTimelineActivity.class));
                         finish();
                     }).addOnFailureListener(e -> {
                         Log.e(TAG, "Could not add to journal");

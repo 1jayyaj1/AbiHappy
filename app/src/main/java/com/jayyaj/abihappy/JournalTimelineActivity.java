@@ -101,6 +101,8 @@ public class JournalTimelineActivity extends AppCompatActivity {
                         journalRecyclerAdapter = new JournalRecyclerViewAdapter(JournalTimelineActivity.this, journalList);
                         recyclerView.setAdapter(journalRecyclerAdapter);
 
+                        recyclerView.getRecycledViewPool().clear();
+
                         //IMPORTANT for recycler view to know when to update itself when the journal data changes
                         journalRecyclerAdapter.notifyDataSetChanged();
                     } else {

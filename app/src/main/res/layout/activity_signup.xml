@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignupActivity"
@@ -36,7 +37,8 @@
             android:layout_marginBottom="8dp"
             android:hint="@string/username_hint"
             android:inputType="textPersonName"
-            android:maxLines="1" />
+            android:maxLines="1"
+            style="@style/edit_text_style" />
 
         <AutoCompleteTextView
             android:id="@+id/emailSignup"
@@ -46,7 +48,8 @@
             android:layout_marginBottom="8dp"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            style="@style/edit_text_style"/>
 
         <EditText
             android:id="@+id/passwordSignup"
@@ -56,7 +59,8 @@
             android:layout_marginBottom="8dp"
             android:hint="@string/password_hint"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            style="@style/edit_text_style"/>
 
         <Button
             android:id="@+id/createAccountButton"

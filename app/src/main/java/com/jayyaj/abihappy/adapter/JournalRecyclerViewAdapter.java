@@ -54,9 +54,12 @@ public class JournalRecyclerViewAdapter extends RecyclerView.Adapter<JournalRecy
         holder.title.setText(journal.getTitle());
         holder.thought.setText(journal.getThought());
         holder.name.setText(journal.getUserName());
-        String timeAgo = (String) DateUtils.getRelativeTimeSpanString(journal.getTimeAdded().getSeconds() * 1000);
+        String timeAgo = (String) DateUtils
+                .getRelativeTimeSpanString(journal.getTimeAdded().getSeconds() * 1000);
         holder.dateAdded.setText(timeAgo);
         Picasso.get().load(journal.getImageUrl())
+                .resize(2560, 1440)
+                .centerCrop()
                 .error(android.R.drawable.stat_notify_error)
                 .into(holder.image, new com.squareup.picasso.Callback() {
                     @Override
@@ -81,6 +84,7 @@ public class JournalRecyclerViewAdapter extends RecyclerView.Adapter<JournalRecy
             share.putExtra(Intent.EXTRA_SUBJECT, subjectToShare);
             share.putExtra(Intent.EXTRA_STREAM, imageToShare);
             context.startActivity(share);
+
         });
     }
 
